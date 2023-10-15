@@ -1,13 +1,10 @@
 pipeline {
-    agent any // Use 'any' agent type to run the pipeline on any available agent
-
+    agent any 
     stages {
         stage('Build') {
             steps {
-                script {
-                    // Run the pipeline inside a Docker container
-                    docker.image('node:16').inside {
-                        // Inside the Docker container, run the npm install command
+                script {                   
+                    docker.image('node:16').inside {                        
                         sh 'npm install --save'
                     }
                 }
